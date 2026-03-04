@@ -80,54 +80,7 @@ const OrderPrints = () => {
 
     const totalPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    const loadRazorpayScript = () => {
-        return new Promise((resolve) => {
-            const script = document.createElement('script');
-            script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-            script.onload = () => resolve(true);
-            script.onerror = () => resolve(false);
-            document.body.appendChild(script);
-        });
-    };
-
-    const handlePaymentAndSubmit = async () => {
-        if (!user) return;
-
-        const isScriptLoaded = await loadRazorpayScript();
-        if (!isScriptLoaded) {
-            alert('Razorpay SDK failed to load. Please check your internet connection.');
-            return;
-        }
-
-        // Razorpay Options
-        const options = {
-            key: 'YOUR_TEST_KEY_HERE', // TODO: Replace with your actual Test Key ID
-            amount: totalPrice * 100, // Amount in paise (multiply by 100)
-            currency: 'INR',
-            name: 'Shree RK Studio',
-            description: 'Photo Print Order',
-            handler: async function (response: any) {
-                // This function runs on successful payment
-                const paymentId = response.razorpay_payment_id;
-                await finalizeOrderUpload(paymentId);
-            },
-            prefill: {
-                name: user.email?.split('@')[0] || 'Customer',
-                email: user.email || '',
-            },
-            theme: {
-                color: '#18181A', // Matches your studio-dark theme
-            },
-        };
-
-        const paymentObject = new (window as any).Razorpay(options);
-        paymentObject.on('payment.failed', function (response: any) {
-            alert('Payment Failed: ' + response.error.description);
-        });
-        paymentObject.open();
-    };
-
-    const finalizeOrderUpload = async (paymentId: string) => {
+    const handleSubmitOrder = async () => {
         if (!user) return;
         setUploading(true);
         setStatus('idle');
@@ -152,7 +105,6 @@ const OrderPrints = () => {
                     customer_id: user.uid,
                     customer_email: user.email,
                     total_price: totalPrice,
-                    // payment_id: paymentId, // Can be added to your database schema later
                     items: uploadedItems.map(item => ({
                         fileName: item.fileName,
                         size: item.size,
@@ -163,7 +115,7 @@ const OrderPrints = () => {
                         quantity: item.quantity,
                         unitPrice: item.price
                     })),
-                    status: 'paid' // Changed from pending to paid since payment is complete
+                    status: 'pending'
                 } as any) as any);
 
             if (orderError) throw orderError;
@@ -441,24 +393,24 @@ const OrderPrints = () => {
                                     )}
 
                                     <button
-                                        onClick={handlePaymentAndSubmit}
+                                        onClick={handleSubmitOrder}
                                         disabled={uploading || items.length === 0}
                                         className="w-full btn-primary disabled:opacity-50 !h-16 group"
                                     >
                                         {uploading ? (
                                             <div className="flex items-center justify-center gap-4">
                                                 <Loader2 className="w-5 h-5 animate-spin" />
-                                                Finalizing Gallery...
+                                                Uploading Gallery...
                                             </div>
                                         ) : (
                                             <div className="flex items-center justify-center gap-4">
-                                                Place Order <Sparkles className="w-4 h-4 transition-transform group-hover:rotate-12" />
+                                                Submit Order <Sparkles className="w-4 h-4 transition-transform group-hover:rotate-12" />
                                             </div>
                                         )}
                                     </button>
 
                                     <p className="mt-8 text-[10px] text-gray-400 text-center uppercase tracking-widest leading-relaxed font-bold opacity-60">
-                                        Powered securely by <br /> Razorpay
+                                        Order will be processed by studio. <br /> Payment at pickup.
                                     </p>
                                 </motion.div>
                             </div>

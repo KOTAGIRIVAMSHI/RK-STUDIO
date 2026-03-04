@@ -21,7 +21,7 @@ interface PrintOrder {
     customer_id: string;
     customer_email: string;
     total_price: number;
-    status: 'paid' | 'printing' | 'ready' | 'delivered';
+    status: 'pending' | 'paid' | 'printing' | 'ready' | 'delivered';
     items: OrderItem[];
 }
 
@@ -91,6 +91,7 @@ const ManageOrders = () => {
 
     const getStatusColor = (status: PrintOrder['status']) => {
         switch (status) {
+            case 'pending': return 'bg-orange-100 text-orange-800 border-orange-200';
             case 'paid': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
             case 'printing': return 'bg-blue-100 text-blue-800 border-blue-200';
             case 'ready': return 'bg-green-100 text-green-800 border-green-200';
@@ -191,12 +192,12 @@ const ManageOrders = () => {
                                                     <Download className="w-4 h-4" /> Download Photos
                                                 </button>
 
-                                                {order.status === 'paid' && (
+                                                {(order.status === 'pending' || order.status === 'paid') && (
                                                     <button
                                                         onClick={() => updateOrderStatus(order.id, 'printing')}
                                                         className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white transition-all"
                                                     >
-                                                        <Package className="w-4 h-4" /> Mark as Printing
+                                                        <Package className="w-4 h-4" /> Start Printing
                                                     </button>
                                                 )}
 
