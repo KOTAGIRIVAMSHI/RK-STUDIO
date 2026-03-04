@@ -32,19 +32,19 @@
   }
 
   .premium-card {
-    @apply glass rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-studio-gold/20 hover:-translate-y-2;
+    @apply glass rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-studio-gold/20 hover:-translate-y-2;
   }
 
   .btn-primary {
-    @apply relative overflow-hidden bg-studio-gold text-white px-8 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-300 hover:bg-studio-dark hover:shadow-2xl active:scale-95;
+    @apply relative overflow-hidden bg-studio-gold text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-300 hover:bg-studio-dark hover:shadow-2xl active:scale-95;
   }
 
   .btn-outline {
-    @apply relative overflow-hidden border border-studio-gold/30 text-studio-dark px-8 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-300 hover:bg-studio-gold hover:text-white hover:border-studio-gold active:scale-95;
+    @apply relative overflow-hidden border border-studio-gold/30 text-studio-dark px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-300 hover:bg-studio-gold hover:text-white hover:border-studio-gold active:scale-95;
   }
 
   .input-field {
-    @apply w-full px-6 py-4 bg-white/50 border border-black/5 rounded-2xl focus:ring-2 focus:ring-studio-gold/20 focus:border-studio-gold focus:bg-white outline-none transition-all duration-300 text-sm;
+    @apply w-full px-4 sm:px-6 py-3 sm:py-4 bg-white/50 border border-black/5 rounded-2xl focus:ring-2 focus:ring-studio-gold/20 focus:border-studio-gold focus:bg-white outline-none transition-all duration-300 text-sm;
   }
 
   .nav-link {
@@ -52,11 +52,11 @@
   }
 
   .section-title {
-    @apply text-5xl md:text-7xl font-serif text-studio-dark mb-6 leading-[1.1];
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif text-studio-dark mb-4 sm:mb-6 leading-[1.1];
   }
 
   .section-tag {
-    @apply text-studio-gold text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block;
+    @apply text-studio-gold text-[10px] font-bold uppercase tracking-[0.3em] mb-3 sm:mb-4 block;
   }
 }
 

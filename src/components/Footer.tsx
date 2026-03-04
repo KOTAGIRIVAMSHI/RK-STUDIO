@@ -3,9 +3,9 @@ import { Camera, Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucid
 
 const Footer = () => {
     return (
-        <footer className="bg-studio-dark text-white pt-24 pb-12">
+        <footer className="bg-studio-dark text-white pt-16 sm:pt-24 pb-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 mb-12 sm:mb-24">
                     {/* Brand Section */}
                     <div className="col-span-1 lg:col-span-1">
                         <Link to="/" className="flex items-center gap-3 mb-8 group">

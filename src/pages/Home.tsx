@@ -34,7 +34,7 @@ const Home = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7, duration: 0.8 }}
-                        className="text-6xl md:text-8xl font-serif font-bold mb-8 leading-[1.1]"
+                        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 sm:mb-8 leading-[1.1]"
                     >
                         Capturing Life's <br />
                         <span className="text-studio-gold italic font-medium">Poetic Moments</span>
@@ -43,7 +43,7 @@ const Home = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2, duration: 1 }}
-                        className="text-lg md:text-xl text-white/60 mb-12 font-sans tracking-wide max-w-2xl mx-auto leading-relaxed"
+                        className="text-base sm:text-lg md:text-xl text-white/60 mb-8 sm:mb-12 font-sans tracking-wide max-w-2xl mx-auto leading-relaxed px-4"
                     >
                         Experience the artistry of professional photography in Hyderabad.
                         We blend technical precision with creative vision to tell your unique story.
@@ -75,8 +75,8 @@ const Home = () => {
             </section>
 
             {/* Stats / Value Props */}
-            <section className="py-20 bg-white border-b border-black/5">
-                <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <section className="py-12 sm:py-20 bg-white border-b border-black/5">
+                <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
                     {[
                         { icon: Camera, label: 'Photos Taken', value: '500k+' },
                         { icon: Star, label: 'Happy Clients', value: '10k+' },
@@ -90,21 +90,21 @@ const Home = () => {
                             transition={{ delay: i * 0.1 }}
                             className="text-center"
                         >
-                            <stat.icon className="w-6 h-6 text-studio-gold mx-auto mb-4 opacity-50" />
-                            <div className="text-3xl font-serif font-bold mb-1">{stat.value}</div>
-                            <div className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{stat.label}</div>
+                            <stat.icon className="w-5 sm:w-6 h-5 sm:h-6 text-studio-gold mx-auto mb-3 sm:mb-4 opacity-50" />
+                            <div className="text-2xl sm:text-3xl font-serif font-bold mb-1">{stat.value}</div>
+                            <div className="text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-400 font-bold">{stat.label}</div>
                         </motion.div>
                     ))}
                 </div>
             </section>
 
             {/* Featured Services */}
-            <section className="py-32 bg-studio-neutral overflow-hidden">
+            <section className="py-16 md:py-32 bg-studio-neutral overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
                         <div className="max-w-2xl">
                             <span className="section-tag">Portfolio Highlights</span>
-                            <h2 className="section-title">Crafting visual legacies for generations.</h2>
+                            <h2 className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Crafting visual legacies for generations.</h2>
                         </div>
                         <a href="/portfolio" className="text-studio-gold font-bold uppercase tracking-widest text-xs hover:underline flex items-center gap-2">
                             View Full Gallery <ArrowRight className="w-4 h-4" />
@@ -142,15 +142,15 @@ const Home = () => {
             </section>
 
             {/* Testimonials */}
-            <section className="py-32 bg-white relative">
+            <section className="py-16 md:py-32 bg-white relative">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="text-center mb-24">
+                    <div className="text-center mb-12 md:mb-24">
                         <span className="section-tag">Reviews</span>
-                        <h2 className="section-title !text-5xl">Voices of Satisfaction</h2>
-                        <p className="text-gray-500 mt-4 max-w-xl mx-auto">Hear what our clients say about their experience with Shree RK Photo Studio.</p>
+                        <h2 className="section-title !text-3xl sm:!text-4xl md:!text-5xl">Voices of Satisfaction</h2>
+                        <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm sm:text-base">Hear what our clients say about their experience with Shree RK Photo Studio.</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                         {[
                             { name: 'Sayantan Basu', text: 'Absolutely lovely place. I went there for my UK Visa Passport size photo. Very professional and quick service.', rating: 5 },
                             { name: 'Neha Bhate', text: 'The frames were delivered to me before time! Excellent service and great quality.', rating: 5 },
@@ -204,7 +204,7 @@ const Home = () => {
             </section>
 
             {/* Map Section */}
-            <section className="relative h-[600px] w-full overflow-hidden">
+            <section className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full overflow-hidden">
                 <div className="absolute inset-0 z-0 grayscale contrast-125 opacity-30">
                     <iframe
                         title="Studio Location"
@@ -220,11 +220,11 @@ const Home = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        className="glass p-12 rounded-[2.5rem] max-w-lg text-center shadow-2xl"
+                        className="glass p-6 sm:p-8 md:p-12 rounded-2xl md:rounded-[2.5rem] max-w-lg text-center shadow-2xl mx-4"
                     >
-                        <MapPin className="w-10 h-10 text-studio-gold mx-auto mb-6" />
-                        <h2 className="text-3xl font-serif font-bold mb-4">Visit Our Studio</h2>
-                        <p className="text-gray-500 mb-8 leading-relaxed">
+                        <MapPin className="w-8 sm:w-10 h-8 sm:h-10 text-studio-gold mx-auto mb-4 sm:mb-6" />
+                        <h2 className="text-2xl sm:text-3xl font-serif font-bold mb-3 sm:mb-4">Visit Our Studio</h2>
+                        <p className="text-gray-500 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
                             Serilingampally, Hyderabad, Telangana. <br />
                             Experience the studio in person and discuss your next project with Ravigaru.
                         </p>
