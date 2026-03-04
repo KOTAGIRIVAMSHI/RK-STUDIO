@@ -86,18 +86,18 @@ const Booking = () => {
 
     return (
         <AnimatePage>
-            <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[30vh] sm:min-h-[40vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000" alt="Booking" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-b from-studio-dark/70 via-studio-dark/50 to-studio-neutral" />
                 </div>
-                <div className="relative z-10 text-center px-4 pt-32">
-                    <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-studio-gold text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Book a Session</motion.span>
-                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl md:text-6xl font-serif font-bold text-white">Book Your Shoot</motion.h1>
+                <div className="relative z-10 text-center px-4 pt-16 sm:pt-24 md:pt-32">
+                    <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-studio-gold text-[10px] xs:text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Book a Session</motion.span>
+                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-white mb-0 sm:mb-4">Book Your Shoot</motion.h1>
                 </div>
             </section>
 
-            <section className="py-16 bg-studio-neutral">
+            <section className="py-10 sm:py-16 bg-studio-neutral">
                 <div className="max-w-4xl mx-auto px-4">
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="premium-card">

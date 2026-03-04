@@ -54,7 +54,7 @@ const Portfolio = () => {
     return (
         <AnimatePage>
             {/* Hero Section */}
-            <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&q=80&w=2000"
@@ -63,11 +63,11 @@ const Portfolio = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-studio-dark/70 via-studio-dark/50 to-studio-neutral" />
                 </div>
-                <div className="relative z-10 text-center max-w-4xl px-4 pt-32">
+                <div className="relative z-10 text-center max-w-4xl px-4 pt-16 sm:pt-24 md:pt-32">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-studio-gold text-xs font-bold uppercase tracking-[0.3em] mb-6 block"
+                        className="text-studio-gold text-[10px] xs:text-xs font-bold uppercase tracking-[0.3em] mb-4 sm:mb-6 block"
                     >
                         A legacy in pixels
                     </motion.span>
@@ -75,7 +75,7 @@ const Portfolio = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-[1.1]"
+                        className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 sm:mb-8 leading-[1.1]"
                     >
                         Visual <span className="text-studio-gold italic">Portfolio</span>
                     </motion.h1>
@@ -83,7 +83,7 @@ const Portfolio = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
-                        className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+                        className="text-white/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
                     >
                         Explore our journey through the lens. Each image represents a moment 
                         preserved with professional care and artistic vision.
@@ -91,22 +91,22 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            <div className="py-24 bg-studio-neutral min-h-screen">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="py-12 sm:py-16 md:py-24 bg-studio-neutral min-h-screen">
+                <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
 
                     {/* Filter Bar */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="flex flex-wrap justify-center gap-4 mb-20"
+                        className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 md:mb-20"
                     >
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={cn(
-                                    "px-10 py-3 rounded-full text-[10px] font-bold transition-all uppercase tracking-[0.2em] border",
+                                    "px-4 sm:px-6 md:px-10 py-2 sm:py-3 rounded-full text-[9px] sm:text-[10px] font-bold transition-all uppercase tracking-[0.2em] border",
                                     activeCategory === cat
                                         ? "bg-studio-dark text-white border-studio-dark shadow-2xl scale-105"
                                         : "bg-white text-studio-dark/40 border-black/5 hover:border-studio-gold hover:text-studio-gold"
@@ -118,15 +118,15 @@ const Portfolio = () => {
                     </motion.div>
 
                     {filteredItems.length === 0 ? (
-                        <div className="text-center py-32 glass rounded-[3rem] border-2 border-dashed border-black/5">
-                            <Camera className="w-16 h-16 text-gray-200 mx-auto mb-6" />
-                            <h2 className="text-2xl font-serif font-bold text-gray-400">Capturing New Stories</h2>
-                            <p className="text-gray-400 mt-2">No images found in this category at the moment.</p>
+                        <div className="text-center py-16 sm:py-32 glass rounded-2xl sm:rounded-[3rem] border-2 border-dashed border-black/5">
+                            <Camera className="w-10 sm:w-16 h-10 sm:h-16 text-gray-200 mx-auto mb-4 sm:mb-6" />
+                            <h2 className="text-xl sm:text-2xl font-serif font-bold text-gray-400">Capturing New Stories</h2>
+                            <p className="text-gray-400 mt-2 text-sm sm:text-base">No images found in this category at the moment.</p>
                         </div>
                     ) : (
                         <motion.div
                             layout
-                            className="columns-1 md:columns-2 lg:columns-3 gap-10 space-y-10"
+                            className="columns-1 sm:columns-2 md:columns-2 lg:columns-3 gap-4 sm:gap-6 md:gap-10 space-y-4 sm:space-y-6 md:space-y-10"
                         >
                             <AnimatePresence mode='popLayout'>
                                 {filteredItems.map((item) => (
@@ -137,7 +137,7 @@ const Portfolio = () => {
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
                                         transition={{ duration: 0.5 }}
-                                        className="relative break-inside-avoid group cursor-pointer overflow-hidden rounded-[2rem] bg-studio-dark shadow-lg hover:shadow-2xl transition-all"
+                                        className="relative break-inside-avoid group cursor-pointer overflow-hidden rounded-2xl sm:rounded-[2rem] bg-studio-dark shadow-lg hover:shadow-2xl transition-all"
                                         onClick={() => setSelectedImage(item.image_url)}
                                     >
                                         <img
@@ -147,11 +147,11 @@ const Portfolio = () => {
                                             loading="lazy"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                                            <div className="p-4 bg-white/20 backdrop-blur-md rounded-full text-white scale-0 group-hover:scale-100 transition-transform duration-500">
-                                                <Maximize2 className="w-6 h-6" />
+                                            <div className="p-3 sm:p-4 bg-white/20 backdrop-blur-md rounded-full text-white scale-0 group-hover:scale-100 transition-transform duration-500">
+                                                <Maximize2 className="w-4 sm:w-6 h-4 sm:h-6" />
                                             </div>
-                                            <div className="absolute bottom-8 left-8 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-studio-gold">{item.category}</span>
+                                            <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                                <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-studio-gold">{item.category}</span>
                                             </div>
                                         </div>
                                     </motion.div>

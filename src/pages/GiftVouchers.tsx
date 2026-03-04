@@ -35,21 +35,21 @@ const GiftVouchers = () => {
 
     return (
         <AnimatePage>
-            <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[30vh] sm:min-h-[40vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=2000" alt="Gift Vouchers" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-b from-studio-dark/70 via-studio-dark/50 to-studio-neutral" />
                 </div>
-                <div className="relative z-10 text-center px-4 pt-32">
-                    <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-studio-gold text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Gift Cards</motion.span>
-                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl md:text-6xl font-serif font-bold text-white">Gift Vouchers</motion.h1>
-                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-white/60 mt-4 max-w-xl mx-auto">
+                <div className="relative z-10 text-center px-4 pt-16 sm:pt-24 md:pt-32">
+                    <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-studio-gold text-[10px] xs:text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Gift Cards</motion.span>
+                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-white mb-3 sm:mb-4">Gift Vouchers</motion.h1>
+                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-white/60 mt-2 sm:mt-4 max-w-xl mx-auto text-sm sm:text-base px-2 sm:px-0">
                         Give the gift of beautiful memories. Perfect for any occasion.
                     </motion.p>
                 </div>
             </section>
 
-            <section className="py-24 bg-studio-neutral">
+            <section className="py-12 sm:py-16 md:py-24 bg-studio-neutral">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {vouchers.map((voucher, i) => (

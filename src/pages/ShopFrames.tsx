@@ -138,7 +138,7 @@ const ShopFrames = () => {
     return (
         <AnimatePage>
             {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&q=80&w=2000"
@@ -147,11 +147,11 @@ const ShopFrames = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-studio-dark/70 via-studio-dark/50 to-studio-neutral" />
                 </div>
-                <div className="relative z-10 text-center max-w-4xl px-4 pt-32">
+                <div className="relative z-10 text-center max-w-4xl px-4 pt-20 sm:pt-24 md:pt-32">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-studio-gold text-xs font-bold uppercase tracking-[0.3em] mb-6 block"
+                        className="text-studio-gold text-[10px] xs:text-xs font-bold uppercase tracking-[0.3em] mb-4 sm:mb-6 block"
                     >
                         Retail Store
                     </motion.span>
@@ -159,7 +159,7 @@ const ShopFrames = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-[1.1]"
+                        className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 sm:mb-8 leading-[1.1]"
                     >
                         Premium <span className="text-studio-gold italic">Frames</span>
                     </motion.h1>
@@ -167,7 +167,7 @@ const ShopFrames = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
-                        className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+                        className="text-white/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
                     >
                         Looking for the perfect physical frame for your existing photos? Browse our curated 
                         collection of high-quality, handcrafted frames in various standard and custom sizes.
