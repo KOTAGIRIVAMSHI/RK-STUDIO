@@ -15,6 +15,7 @@ import CustomerLogin from './pages/customer/Login'
 import CustomerRegister from './pages/customer/Register'
 import CustomerDashboard from './pages/customer/Dashboard'
 import OrderPrints from './pages/customer/OrderPrints'
+import PassportPhotos from './pages/customer/PassportPhotos'
 
 import ManageServices from './pages/admin/ManageServices'
 import ManagePortfolio from './pages/admin/ManagePortfolio'
@@ -51,6 +52,7 @@ function App() {
                             <Route element={<CustomerProtectedRoute />}>
                                 <Route path="/dashboard" element={<CustomerDashboard />} />
                                 <Route path="/order-prints" element={<OrderPrints />} />
+                                <Route path="/passport-photos" element={<PassportPhotos />} />
                             </Route>
 
                             <Route path="/admin/login" element={<Login />} />

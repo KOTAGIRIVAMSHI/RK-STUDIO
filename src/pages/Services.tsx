@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { Database } from '../types/supabase'
-import { Loader2, Camera, ArrowRight, Sparkles, Clock, Award, Heart, ShoppingBag, Gift, Calendar, Package } from 'lucide-react'
+import { Loader2, Camera, ArrowRight, Sparkles, Clock, Award, Heart, ShoppingBag, Gift, Calendar, Package, BookOpen, Truck } from 'lucide-react'
 import { motion } from 'framer-motion'
 import AnimatePage from '../components/AnimatePage'
 import { Link } from 'react-router-dom'
@@ -13,6 +13,8 @@ const FEATURED_SERVICES = [
     { icon: Camera, title: 'Portrait Sessions', desc: 'Professional portraits for individuals, families, and professional profiles', image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=1000' },
     { icon: Sparkles, title: 'Event Coverage', desc: 'Complete event photography for corporate functions, parties, and celebrations', image: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=1000' },
     { icon: Award, title: 'Product Photography', desc: 'High-quality product shots for e-commerce, catalogs, and advertising', image: 'https://images.unsplash.com/photo-1606402179428-a57976d71fa4?auto=format&fit=crop&q=80&w=1000' },
+    { icon: BookOpen, title: 'Passport Photos', desc: 'Official passport and visa photos meeting all government requirements', image: 'https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&q=80&w=1000' },
+    { icon: Truck, title: 'Frame Delivery', desc: 'Premium frames delivered to your doorstep with safe packaging', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1000' },
 ]
 
 const STATS = [
@@ -160,12 +162,21 @@ const Services = () => {
                                     <p className="text-white/70 text-sm line-clamp-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         {service.desc}
                                     </p>
-                                    <a
-                                        href="/contact"
-                                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-studio-gold hover:text-white transition-colors"
-                                    >
-                                        Enquire <ArrowRight className="w-3 h-3" />
-                                    </a>
+                                    {service.title === 'Passport Photos' ? (
+                                        <Link
+                                            to="/passport-photos"
+                                            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-studio-gold hover:text-white transition-colors"
+                                        >
+                                            Get Started <ArrowRight className="w-3 h-3" />
+                                        </Link>
+                                    ) : (
+                                        <a
+                                            href="/contact"
+                                            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-studio-gold hover:text-white transition-colors"
+                                        >
+                                            Enquire <ArrowRight className="w-3 h-3" />
+                                        </a>
+                                    )}
                                 </div>
                             </motion.div>
                         ))}

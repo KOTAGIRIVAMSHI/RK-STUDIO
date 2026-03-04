@@ -34,6 +34,7 @@ const OrderPrints = () => {
     const [items, setItems] = useState<PrintItem[]>([]);
     const [uploading, setUploading] = useState(false);
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [error, setError] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,8 +124,9 @@ const OrderPrints = () => {
             setStatus('success');
             setItems([]);
             setTimeout(() => navigate('/dashboard'), 3000);
-        } catch (err) {
+        } catch (err: any) {
             console.error('Order error:', err);
+            setError(err?.message || err?.error_description || 'Failed to submit order. Please try again.');
             setStatus('error');
         } finally {
             setUploading(false);
@@ -385,10 +387,10 @@ const OrderPrints = () => {
                                         <motion.div
                                             initial={{ opacity: 0, height: 0 }}
                                             animate={{ opacity: 1, height: 'auto' }}
-                                            className="p-6 bg-red-50 border border-red-100 text-red-600 rounded-2xl text-[11px] font-bold uppercase tracking-widest flex items-center gap-4 mb-8"
+                                            className="p-6 bg-red-50 border border-red-100 text-red-600 rounded-2xl text-[11px] font-bold uppercase tracking-widest flex items-start gap-4 mb-8"
                                         >
                                             <AlertCircle className="w-6 h-6 shrink-0" />
-                                            Processing failed. Please attempt again.
+                                            {error || 'Processing failed. Please attempt again.'}
                                         </motion.div>
                                     )}
 

@@ -6,9 +6,10 @@
 CREATE TABLE IF NOT EXISTS public.print_orders (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     customer_id TEXT NOT NULL, -- Stores the Firebase Auth UID
+    customer_email TEXT, -- Customer email for notifications
     items JSONB NOT NULL,      -- Stores array of print items (size, qty, price)
     total_price DECIMAL(10,2) NOT NULL,
-    status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'processing', 'completed', 'cancelled')),
+    status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'paid', 'printing', 'ready', 'delivered')),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
 );
 
@@ -16,14 +17,19 @@ CREATE TABLE IF NOT EXISTS public.print_orders (
 ALTER TABLE public.print_orders ENABLE ROW LEVEL SECURITY;
 
 -- 2. RLS Policies for print_orders
--- Since customers use Firebase Auth, they act as "anon" public users to Supabase.
--- We must allow public inserts so they can place orders from the frontend.
+-- Allow public inserts so customers can place orders from the frontend
 CREATE POLICY "Allow public inserts for print orders" ON public.print_orders
     FOR INSERT 
     TO public
     WITH CHECK (true);
 
--- Allow Studio Admins (who log in via Supabase Auth) full access to view/update all orders
+-- Allow customers to view their own orders (by customer_id)
+CREATE POLICY "Customers view own orders" ON public.print_orders
+    FOR SELECT
+    TO public
+    USING (customer_id IS NOT NULL);
+
+-- Allow Studio Admins full access to view/update all orders
 CREATE POLICY "Admin full access print_orders" ON public.print_orders
     FOR ALL
     TO authenticated
@@ -35,19 +41,24 @@ CREATE POLICY "Admin full access print_orders" ON public.print_orders
 -- ==========================================
 
 -- 3. Set up Storage Bucket for high-res customer photo uploads
--- This creates the 'customer-uploads' bucket if it doesn't already exist.
 INSERT INTO storage.buckets (id, name, public) 
 VALUES ('customer-uploads', 'customer-uploads', true)
 ON CONFLICT (id) DO NOTHING;
 
 -- 4. RLS Policies for the Storage Bucket
--- Allow anonymous users (Firebase customers) to upload files into this bucket
+-- Allow public users to upload files
 CREATE POLICY "Allow public uploads to customer-uploads" ON storage.objects
     FOR INSERT 
     TO public
     WITH CHECK (bucket_id = 'customer-uploads');
 
--- Allow Studio Admins full read/write/delete access to the bucket
+-- Allow public users to read their own uploaded files
+CREATE POLICY "Allow public read customer-uploads" ON storage.objects
+    FOR SELECT
+    TO public
+    USING (bucket_id = 'customer-uploads');
+
+-- Allow Studio Admins full access to the bucket
 CREATE POLICY "Admin full access to customer-uploads" ON storage.objects
     FOR ALL
     TO authenticated

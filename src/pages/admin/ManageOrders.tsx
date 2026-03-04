@@ -219,7 +219,7 @@ const ManageOrders = () => {
                                                     </button>
                                                 )}
 
-                                                {(order.status === 'paid' || order.status === 'printing' || order.status === 'ready') && (
+                                                {(order.status === 'pending' || order.status === 'paid' || order.status === 'printing' || order.status === 'ready') && (
                                                     <p className="mt-4 text-[10px] text-gray-400 text-center uppercase tracking-widest">
                                                         Update status to notify customer via dashboard.
                                                     </p>
